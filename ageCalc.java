@@ -2,16 +2,27 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Scanner;
 
-public class ageCalc {
+public class AgeCalculator {
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        // Asking user to enter their birth date in the format YYYY-MM-DD
         System.out.println("Enter your birth date (YYYY-MM-DD): ");
-        String birthDateInput = sc.nextLine();
+        String birthDateInput = scanner.nextLine();
+
+        // Parsing the input string to a LocalDate object
         LocalDate birthDate = LocalDate.parse(birthDateInput);
-        LocalDate currentDate = LocalDate.now();
-        Period age = Period.between(birthDate, currentDate);
+
+        // Getting the current date
+        LocalDate today = LocalDate.now();
+
+        // Calculating the difference between current date and birth date
+        Period age = Period.between(birthDate, today);
+
+        // Displaying the calculated age in years, months, and days
         System.out.println("You are " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days old.");
 
-        sc.close();
+        scanner.close();
     }
 }
